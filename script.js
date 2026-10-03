@@ -240,7 +240,7 @@ function verifyOwnerPin(e) {
         renderAdminProductsList();
         updateDashboardCount();
         document.getElementById("dashboardModal").classList.add("active");
-        showToast("مرحباً بك يا أونر المتجر!");
+        showToast("مرحباً بك يا مدير!");
     } else {
         showToast("❌ الرمز السري غير صحيح!");
         document.getElementById("ownerPinInput").value = "";
