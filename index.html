@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حباش ام حسن </title>
+    <!-- خط Cairo الفخم -->
+    <link href="logo.jpeg" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ملف الـ CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الهيدر وقائمة التنقل -->
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" width="50px" height="50px" style="border-radius: 25px;" alt=""> حباش أم حسن
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#products">منتجاتنا</a>
+            <a href="#about">من نحن</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- زر لوحة التحكم الشاملة (Dashboard) -->
+            <button class="admin-btn-toggle" onclick="openDashboardModal()">
+                <i class="fa-solid fa-gauge-high"></i> لوحة التحكم
+            </button>
+            <!-- زر سلة المشتريات -->
+            <button class="cart-btn-toggle" onclick="toggleCartDrawer()">
+                <i class="fa-solid fa-cart-shopping"></i> السلة
+                <span id="cartCount" class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- قسم الرئيسية (Hero) المحسن -->
+    <section id="home" class="hero">
+        <div class="hero-badge"><i class="fa-solid fa-seedling"></i> خيرات القرية المصرية الأصلية</div>
+        <h1>أصالة <span>الريف المصري</span> على أصلها</h1>
+        <p>اطلب الآن أجود أنواع المنتجات الريفية الفاخرة، طبيعية 100% بدون أي مواد إضافية، وتصلك لحد باب البيت بجودة لا تقبل المنافسة.</p>
+        
+        <div class="hero-actions-box">
+            <a href="#products" class="cta-main-btn"><i class="fa-solid fa-bag-shopping"></i> تصفح المنتجات الآن</a>
+            <a href="https://wa.me/201003499195" target="_blank" class="cta-secondary-btn"><i class="fa-brands fa-whatsapp"></i> اطلب عبر الواتساب</a>
+        </div>
+
+        <!-- إحصائيات سريعة تزيد الثقة (UX) -->
+        <div class="hero-stats">
+            <div class="stat-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <h4>جودة مضمونة</h4>
+                    <span>طبيعي 100%</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <h4>توصيل سريع</h4>
+                    <span>لحد باب البيت</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-face-smile"></i>
+                <div>
+                    <h4>عملاء سعداء</h4>
+                    <span>أكثر من 1000 طلب</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات والبحث والفلترة -->
+    <div id="products" class="container">
+        <h2 class="section-title">منتجاتنا المميزة</h2>
+        
+        <!-- أدوات البحث والفلترة (UX محسنة) -->
+        <div class="store-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج (جبنة، سمن، رنجة...)" oninput="filterProducts()">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="setCategory('all', this)">الكل</button>
+                <button class="filter-btn" onclick="setCategory('جبن', this)">أجبان</button>
+                <button class="filter-btn" onclick="setCategory('سمن', this)">سمن زبدة</button>
+                <button class="filter-btn" onclick="setCategory('رنجة', this)">أسماك مدخنة</button>
+            </div>
+        </div>
+
+        <!-- شبكة المنتجات -->
+        <div id="productsGrid" class="products-grid"></div>
+    </div>
+
+    <!-- قسم من نحن -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">من نحن</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>متجر "حباش أم حسن" للخيرات الريفية الأصيلة</h3>
+                    <p>نقدم لك طعم الزمن الجميل وخيرات القرية المصرية على أصلها. منتجاتنا محضرة بعناية فائقة وبطرق ريفية أصيلة لضمان أعلى جودة ومذاق يذكرك بأيام زمان.</p>
+                    <div class="features-list">
+                        <div><i class="fa-solid fa-check-circle"></i> منتجات طبيعية 100%</div>
+                        <div><i class="fa-solid fa-check-circle"></i> جودة فائقة وأسعار تنافسية</div>
+                        <div><i class="fa-solid fa-check-circle"></i> توصيل سريع لغاية باب البيت</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم تواصل معنا -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            <div class="contact-box">
+                <p>يسعدنا خدمتكم وتلقي طلباتكم واستفساراتكم طوال أيام الأسبوع عبر الرقم المخصص:</p>
+                <a href="https://wa.me/201003499195" target="_blank" class="whatsapp-direct-btn">
+                    <i class="fa-brands fa-whatsapp"></i> مراسلة عبر الواتساب (+20 10 03499195)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- سلة المشتريات الجانبية (Cart Drawer) -->
+    <div id="cartOverlay" class="cart-overlay" onclick="toggleCartDrawer()"></div>
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> سلة المشتريات</h3>
+            <button class="close-cart" onclick="toggleCartDrawer()">&times;</button>
+        </div>
+        <div id="cartItemsContainer" class="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total-box">
+                <span>الإجمالي الكلي:</span>
+                <span id="cartTotalPrice">0 ج.م</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckoutModal()">
+                إتمام الطلب عبر الواتساب <i class="fa-brands fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- نافذة إدخال بيانات العميل للشحن -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCheckoutModal()">&times;</button>
+            <h3 class="modal-title">أكمل بيانات التوصيل</h3>
+            <form id="checkoutForm" onsubmit="sendWhatsAppOrder(event)">
+                <div class="form-group">
+                    <label>الاسم الكريم:</label>
+                    <input type="text" id="clientName" required placeholder="أدخل اسمك الكامل">
+                </div>
+                <div class="form-group">
+                    <label>رقم التليفون:</label>
+                    <input type="tel" id="clientPhone" required placeholder="010xxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>العنوان بالتفصيل:</label>
+                    <textarea id="clientAddress" rows="3" required placeholder="المحافظة، المركز، الشارع..."></textarea>
+                </div>
+                <button type="submit" class="submit-order-btn">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> تأكيد وإرسال الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم الكاملة (Dashboard Modal) -->
+    <div class="modal-overlay" id="dashboardModal">
+        <div class="dashboard-modal-content">
+            <button class="close-modal" onclick="closeDashboardModal()">&times;</button>
+            <h3 class="modal-title"><i class="fa-solid fa-gauge-high"></i> لوحة تحكم المتجر (Dashboard)</h3>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" onclick="switchDashboardTab('add')"><i class="fa-solid fa-plus"></i> إضافة منتج جديد</button>
+                <button class="tab-btn" onclick="switchDashboardTab('manage')"><i class="fa-solid fa-boxes-stacked"></i> إدارة المنتجات (<span id="dashboardCount">0</span>)</button>
+            </div>
+
+            <!-- تبويب إضافة منتج -->
+            <div id="tabAdd" class="dashboard-tab-content active">
+                <form id="adminForm" onsubmit="addNewProduct(event)">
+                    <div class="form-group">
+                        <label>اسم المنتج:</label>
+                        <input type="text" id="adminName" required placeholder="مثال: جبنة قريش فلاحي">
+                    </div>
+                    <div class="form-group">
+                        <label>السعر (بالجنيه):</label>
+                        <input type="number" id="adminPrice" required placeholder="90">
+                    </div>
+                    <div class="form-group">
+                        <label>الشارة (Badge):</label>
+                        <input type="text" id="adminBadge" required placeholder="مثال: 90ج الكيلو">
+                    </div>
+                    <div class="form-group">
+                        <label>اختر صورة المنتج من جهازك:</label>
+                        <input type="file" id="adminImageFile" accept="image/*" required style="padding: 7px; background: #111; border: 1px solid #333; border-radius: 6px; color: #fff; width: 100%; cursor: pointer;">
+                    </div>
+                    <div class="form-group">
+                        <label>وصف المنتج:</label>
+                        <textarea id="adminDesc" rows="2" required placeholder="وصف قصير للمنتج..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-order-btn" style="background: var(--primary); color:#000;">
+                        حفظ وإضافة المنتج للمتجر
+                    </button>
+                </form>
+            </div>
+
+            <!-- تبويب إدارة وحذف المنتجات -->
+            <div id="tabManage" class="dashboard-tab-content">
+                <div class="admin-products-list" id="adminProductsList"></div>
+            </div>
+        </div>
+    </div>
+    <!-- نافذة تسجيل دخول الأونر الاحترافية -->
+<div class="modal-overlay" id="ownerLoginModal">
+    <div class="modal-content" style="max-width: 380px; text-align: center;">
+        <button class="close-modal" onclick="closeOwnerLoginModal()">&times;</button>
+        <div style="font-size: 35px; color: var(--primary); margin-bottom: 10px;">
+            <i class="fa-solid fa-lock-keyhole"></i>
+        </div>
+        <h3 class="modal-title" style="margin-bottom: 5px;">دخول صاحب المحل فقط!</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">هذه المنطقة مخصصة لإدارة المتجر فقط، يرجى إدخال الرمز السري.</p>
+        
+        <form onsubmit="verifyOwnerPin(event)">
+            <div class="form-group" style="text-align: right;">
+                <label>الرمز السري (PIN):</label>
+                <input type="password" id="ownerPinInput" required placeholder="أدخل الرمز السري..." style="text-align: center; font-size: 18px; letter-spacing: 3px;" autofocus>
+            </div>
+            <button type="submit" class="submit-order-btn"  style=" background: var(--primary); color: #fff; font-weight: 700;">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> دخول لوحة التحكم
+            </button>
+        </form>
+    </div>
+</div>
+
+    <!-- إشعار عائم Toast احترافي (بدل alert المزعجة) -->
+    <div id="toastNotification" class="toast-notification">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">تمت إضافة المنتج للسلة بنجاح!</span>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 | تصميم وتنفيذ متجر <span>حباش أم حسن</span></p>
+    </footer>
+
+    <!-- ملف الـ JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
